@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<!--    <script src="opcao.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/sorteio.js"></script>
+
+    <title>Sorteador</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Sorteador de Numeros</h2>
+<!--    <form action="/" method="post">-->
+        <div class="input-group mb-3"> Sortear
+            <input id="qtd_numeros" name="qtd_numeros" type="number" class="form-control"
+                   placeholder="Quantidade de Numeros"
+                   aria-describedby="sp_qtd_numeros"> numeros
+        </div>
+        <div class="input-group mb-3">
+            Entre
+            <input id="numeroInicio" name="numeroInicio" type="number" class="form-control" placeholder=""
+                   aria-describedby="sp_qtd_faces"> e
+            <input id="numeroFim" name="numeroFim" type="number" class="form-control" placeholder=""
+                   aria-describedby="sp_qtd_faces2">
+        </div>
+
+        <div class="input-group mb-3">
+            <label>Opções de Sorteio:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="ordenarCheckbox" id="ordenarCheckbox" value="true">
+                <label class="form-check-label" for="ordenarCheckbox">Ordenar em Ordem Crescente</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="repetirCheckbox" id="repetirCheckbox" value="true">
+                <label class="form-check-label" for="repetirCheckbox">Permitir Repetição</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <button id="btnSortear" class="btn btn-danger">SORTEAR AGORA !</button>
+            </div>
+        </div>
+<!--    </form>-->
+    <div id="resultados" class="row mt-5" th:if="${sorteio}">
+        <div class="col-sm-6 text-center">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <h4>Resultado do Sorteio</h4>
+                <tbody>
+                <tr th:each="numero, cont :${sorteio}">
+                    <!--                    <td th:text="${cont.index + 1}"></td>-->
+                    <td th:text="${numero}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6 text-center">
+            <div>
+                <h4>Quantidade Sorteada</h4>
+                <p th:text="${sorteio.length}"></p>
+            </div>
+            <div>
+                <h4 class="mt-4">Sorteio Entre</h4>
+                <p th:text="${param.numeroInicio + ' e ' + param.numeroFim}"></p>
+            </div>
+            <div>
+                <h4 class="mt-4">Data do Sorteio</h4>
+                <p th:text="${#dates.format(dataSorteio, 'dd/MM/yyyy HH:mm:ss')}"></p>
+                <p>GMT- (Horario de Brasilia)</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>
