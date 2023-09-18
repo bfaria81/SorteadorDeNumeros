@@ -1,0 +1,123 @@
+
+    .resultado {
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        background-color: #F9F871;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .sorteio {
+        border-radius: 10px;
+        background: linear-gradient(to right, #4C49D7, #D133B8);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+        color: white;
+
+    }
+
+    .hover-border-2 {
+        width: 65px;
+        height: 65px;
+        background-color: #FF478A;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        margin: 5px;
+        border: 2px solid transparent;
+        transition: border 0.2s ease-in-out;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+
+    }
+
+    .hover-border-2:hover {
+        border: 5px solid #FFC151;
+    }
+
+    h1 {
+        color: white;
+        border-radius: 10px;
+        background: linear-gradient(to right, #4C49D7, #D133B8);
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    h3{
+        padding: 10px;
+    }
+
+    h4{
+        padding-top: 10px;
+    }
+
+    label {
+        padding-right: 10px;
+    }
+
+    .opcao{
+        font-weight: bold;
+    }
+
+
+    button {
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+     p {
+        color: #FFC151;
+        font-weight: bold;
+    }
+
+    .bottom{
+        padding-bottom: 10px;
+    }
+
+    .bottomInfo{
+         padding-bottom: 10px;
+         font-size: 25px;
+         font-weight: bold;
+     }
+
+    span{
+        font-size: 28px;
+        font-weight: bold;
+        color: #c40024;
+    }
+
+    /* Estilos para os inputs */
+    .form-control.gNumeroInicio,
+    .form-control.gNumeroFim,
+    .gNumeros,
+    .gNum{
+
+     max-width: 470px; /* Largura máxima dos inputs */
+    }
+
+    body {
+        background-color: #FCF7FF; /* Define o fundo */
+        background: linear-gradient(to right, #cffce0, #5d36bf);
+    }
+
+   .mensagem-erro {
+       background-color: #FFC151;
+       border: 2px solid red;
+       padding: 5px;
+       margin: 20px auto;
+       max-width: 650px;
+       color: #c40024;
+       border-radius: 10px;
+       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+       text-align: center;
+       font-weight: bold;
+   }
+
+
+

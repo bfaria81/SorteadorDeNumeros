@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/sorteio.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sorteador</title>
+</head>
+
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Sorteador de Números</h1>
+
+    <div class="input-group mb-3 gNumeros mx-auto">
+        <span style="margin-right: 10px;">Sortear</span>
+        <input id="qtd_numeros" name="qtd_numeros" type="number" class="form-control rounded mx-auto text-center"
+               placeholder="Quantidade de Numeros"
+               aria-describedby="sp_qtd_numeros">
+        <span style="margin-left: 10px;">numeros</span>
+    </div>
+
+    <div class="input-group mb-3 gNum mx-auto text-center textos">
+        <span style="margin-right: 10px;">Entre</span>
+        <input id="numeroInicio" name="numeroInicio" type="number"
+               class="form-control rounded gNumeroInicio mx-auto text-center"
+               aria-describedby="sp_numeroInicio">
+        <span style="margin-right: 10px; margin-left: 10px">e</span>
+        <input id="numeroFim" name="numeroFim" type="number"
+               class="form-control rounded gNumeroFim mx-auto text-center"
+               aria-describedby="sp_numeroFim">
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="opcao">Opções de Sorteio:</label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="ordenarCheckbox" id="ordenarCheckbox" value="true">
+            <label class="form-check-label" for="ordenarCheckbox">Ordenar em Ordem Crescente:</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="repetirCheckbox" id="repetirCheckbox" value="true">
+            <label class="form-check-label" for="repetirCheckbox">Permitir Repetição:</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <button id="btnSortear" class="btn btn-danger btn-lg">SORTEAR AGORA !</button>
+        </div>
+    </div>
+
+    <div th:if="${mensagemErro}" >
+        <div class="mensagem-erro" th:text="${mensagemErro}"></div>
+    </div>
+
+    <div class="row mt-5" th:if="${sorteio}">
+        <div class="col-sm-6 text-center">
+            <table>
+                <h3 class="sorteio">Resultado do Sorteio</h3>
+
+                <div class="resultado">
+                    <div th:each="numero, cont :${sorteio}" class="hover-border-2" th:text="${numero}" ></div>
+                </div>
+
+            </table>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <div class="sorteio">
+                <h4>Quantidade Sorteada</h4>
+                <p class="bottomInfo" th:text="${sorteio.length}"></p>
+            </div>
+
+            <div class="sorteio">
+                <h4 class="mt-4">Sorteio Entre</h4>
+                <p class="bottomInfo" th:text="${param.numeroInicio + ' e ' + param.numeroFim}"></p>
+            </div>
+
+            <div class="sorteio">
+                <h4 class="mt-4">Data do Sorteio</h4>
+                <div>Data e hora Server-side</div>
+                <p class="mt-1" th:text="${#dates.format(dataSorteio, 'dd/MM/yyyy HH:mm:ss')}"></p>
+                <div>Data e hora Client-side</div>
+                <p class="mt-1 bottom" id="dataHora"></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
